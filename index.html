@@ -1,47 +1,57 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <title>Plantouille</title>
-    <link rel="stylesheet" href="css/presentation.css">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital@0;1&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <title>Plantouille</title>
+  <link rel="stylesheet" href="css/presentation.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital@0;1&display=swap" rel="stylesheet">
 </head>
 <body>
 
-    <img src="images/logo.png" alt="Plantouille" id="logo" class="fade-in delay-1">
+  <img src="images/logo.png" alt="Plantouille" id="logo">
 
-    <div id="presentation" class="fade-in delay-2">
-        Plantouille est une encyclopédie botanique vivante dédiée aux plantes,
-        à leur diversité et à leur culture.
-    </div>
+  <div id="presentation">
+    Plantouille est une encyclopédie botanique vivante dédiée aux plantes,
+    à leur diversité et à leur culture.
+  </div>
 
-    <button id="enter-btn" class="fade-in delay-3">Entrer</button>
+  <button id="enter-btn">Entrer</button>
 
-    <script>
-        const logo = document.getElementById("logo");
-        const presentation = document.getElementById("presentation");
-        const button = document.getElementById("enter-btn");
+  <script>
+    const logo = document.getElementById("logo");
+    const text = document.getElementById("presentation");
+    const btn  = document.getElementById("enter-btn");
 
-        button.addEventListener("click", () => {
-            // bouton fade-out
-            button.style.animation = "fadeOut 0.8s forwards";
+    // Apparition simple (logo -> texte -> bouton)
+    window.addEventListener("load", () => {
+      logo.classList.add("fade-in");
 
-            // texte fade-out après 0.4s
-            setTimeout(() => {
-                presentation.style.animation = "fadeOut 0.8s forwards";
-            }, 400);
+      setTimeout(() => {
+        text.classList.add("fade-in");
+      }, 600);
 
-            // logo fade-out après 0.8s
-            setTimeout(() => {
-                logo.style.animation = "fadeOut 0.8s forwards";
-            }, 800);
+      setTimeout(() => {
+        btn.classList.add("fade-in");
+      }, 1200);
+    });
 
-            // redirection après tout
-            setTimeout(() => {
-                window.location.href = "accueil.html";
-            }, 1600);
-        });
-    </script>
+    // Disparition simple (bouton -> texte -> logo) puis redirection
+    btn.addEventListener("click", () => {
+      btn.style.animation = "fadeOut 0.8s forwards";
+
+      setTimeout(() => {
+        text.style.animation = "fadeOut 0.8s forwards";
+      }, 300);
+
+      setTimeout(() => {
+        logo.style.animation = "fadeOut 0.8s forwards";
+      }, 600);
+
+      setTimeout(() => {
+        window.location.href = "accueil.html";
+      }, 1400);
+    });
+  </script>
 
 </body>
 </html>
